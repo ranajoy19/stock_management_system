@@ -1,0 +1,63 @@
+ <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <a class="navbar-brand" href="{% url 'home' %}" style="font-size:unset;">Stock Management</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+      </li>
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link" href="{% url 'add_items' %}">Add Items</a>-->
+<!--      </li>-->
+<!--      <li class="nav-item">-->
+
+<!--        <a class="nav-link" href="{% url 'list_item' %}">List Items</a>-->
+<!--      </li>-->
+<!--        <li class="nav-item">-->
+<!--    <a class="nav-link" href="{% url 'list_history' %}">List History</a>-->
+<!--    </li>-->
+
+    </ul>
+     <ul class="navbar-nav">
+        {% if request.user.is_authenticated %}
+        <li><a href="/stock/v1/accounts/logout"><button class="btn btn-danger">{{ user.first_name  }} | Logout</button></a></li>
+        {% else %}
+        <li><a href="/stock/v1/accounts/login">Login</a></li>
+        {% endif %}
+    </ul>
+  </div>
+</nav>
+
+
+ <a href="#"><div id="version-display" data-toggle="modal" data-target="#myModal">SMIS Ver: 1.0</div></a>
+  <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+          <!-- Modal content-->
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                    <h4 class="modal-title">System Information</h4>
+                </div>
+
+                <div class="modal-body">
+                    <div class="dev-info">
+                      <p class=""><b>STOCK MANAGEMENT INFORMATION SYSTEMS</b></p>
+                      <p>VERSION: 1.O</p><br>
+
+                      <p class="modal-header">DEVELOPER:</p>
+                      <p>Ranajoy Bhattacharjee</p>
+                      <p> <a href="https://www.linkedin.com/in/ranajoy-bhattacharjee-1b37b5150/">Connect : <i class="fa fa-linkedin" aria-hidden="true"></i></a></p>
+                      <p><img src="https://avatars.githubusercontent.com/u/59921969?s=400&u=f2de2f66e8ea13d8a9d6ae297d76e1f399fc6017&v=4" style="border-radius: 4px; overflow: hidden; height: 150px; " alt="Developer Logo"></p>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+      </div>
+  </div>

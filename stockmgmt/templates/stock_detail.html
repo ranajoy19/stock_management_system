@@ -1,0 +1,30 @@
+{% extends 'index.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<a href="{% url 'issue_items' queryset.id %}"><div class='btn btn-danger'>ISSUE THIS ITEM</div></a>
+    <a href="{% url 'receive_items' queryset.id %}"><div class='btn btn-primary'>RECEIVE THIS ITEM</div></a>
+        <br><br>
+        <div class="display_table">
+          <table class='table'>
+                  <tr>
+                    <th>ITEM NAME</th>
+                    <th>QUANTITY IN STORE</th>
+                    <th>LAST UPDATED</th>
+                    <th>REORDER LEVEL</th>
+                  </tr>
+                  <tr>
+                    <td>{{queryset.item_name}}</td>
+                    <td>
+  {% if queryset.quantity <= queryset.reorder_level %}
+  <div style="background-color: orange;">{{queryset.quantity}}</div>
+  {% else %}{{queryset.quantity}}
+  {% endif %}
+</td>
+                    <td>{{queryset.last_updated}}</td>
+                    <td><a href="{% url 'reorder_level' queryset.id %}">{{queryset.reorder_level}}</a></td>                  </tr>
+          </table>
+        </div>
+{% endblock %}

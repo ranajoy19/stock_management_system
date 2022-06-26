@@ -1,0 +1,50 @@
+{% extends 'index.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+<div class="row"><!--Start of row-->
+        <div class="col-sm-2"><!--Start of first col-->
+
+          <form method='POST' action=''>{% csrf_token %}
+                {{form|crispy}}
+                <input type="submit" value='Search'/>
+            </form>
+        </div><!--End of first col-->
+    <div class="col-sm-10"><!--Start of second col-->
+
+        <div class="display_table">
+                <table class='table'>
+                  <thead>
+                    <tr>
+                      <th>COUNT</th>
+                      <th>ID</th>
+                      <th>CATEGORY</th>
+                      <th>ITEM NAME</th>
+                      <th>QUANTITY IN STORE</th>
+                      <th>ISSUE QUANTITY</th>
+                      <th>RECEIVE QUANTITY</th>
+                      <th>LAST UPDATED</th>
+                    </tr>
+                  </thead>
+                {% for instance in queryset %}
+                    <tr>
+                      <td>{{forloop.counter}}</td>
+                      <td>{{instance.id}}</td>
+                      <td>{{instance.category}}</td>
+                        <td>{{instance.item_name}}</td>
+                      <td>{{instance.quantity}}</td>
+                      <td>{{instance.issue_quantity}}</td>
+                      <td>{{instance.receive_quantity}}</td>
+                      <td>{{instance.last_updated}}</td>
+                    </tr>
+                {% endfor %}
+              </table>
+            </div>
+    </div><!--End of second col-->
+
+</div><!--end of row-->
+
+{% endblock %}
